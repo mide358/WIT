@@ -11,22 +11,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#home">Home</a>
+                    <a class="nav-link active" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#findAMentor">Find a Mentor</a>
+                    <a class="nav-link" href="{{ route('frontend.mentors.index') }}">Find a Mentor</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#allMentors">Browse all Mentors</a>
+                    <a class="nav-link" href="{{ route('frontend.mentors.index') }}">Browse all Mentors</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#faqs">FAQs</a>
+                    <a class="nav-link" href="#">FAQs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#blog">Blog</a>
+                    <a class="nav-link" href="#">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact Us</a>
+                    <a class="nav-link" href="#">Contact Us</a>
                 </li>
             </ul>
 

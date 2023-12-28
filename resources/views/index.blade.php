@@ -304,7 +304,7 @@
                             <a href="#!" class="stretched-link">
                                 <h5 class="fs-17 pt-1">Mentors</h5>
                             </a>
-                            <p class="mb-0 text-muted">1543 </p>
+                            <p class="mb-0 text-muted">{{ $mentorsCount }} </p>
                         </div>
                     </div>
                 </div>
@@ -320,7 +320,7 @@
                             <a href="#!" class="stretched-link">
                                 <h5 class="fs-17 pt-1">Interests</h5>
                             </a>
-                            <p class="mb-0 text-muted">3241 </p>
+                            <p class="mb-0 text-muted">{{ $interestsCount }} </p>
                         </div>
                     </div>
                 </div>
@@ -336,7 +336,7 @@
                             <a href="#!" class="stretched-link">
                                 <h5 class="fs-17 pt-1">Learners</h5>
                             </a>
-                            <p class="mb-0 text-muted">876</p>
+                            <p class="mb-0 text-muted">{{ $learnersCount }}</p>
                         </div>
                     </div>
                 </div>
@@ -352,7 +352,7 @@
                             <a href="#!" class="stretched-link">
                                 <h5 class="fs-17 pt-1">Courses</h5>
                             </a>
-                            <p class="mb-0 text-muted">465</p>
+                            <p class="mb-0 text-muted">{{ $coursesCount }}</p>
                         </div>
                     </div>
                 </div>
@@ -855,81 +855,23 @@
                 <div class="col-lg-12">
                     <div class="swiper candidate-swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="card text-center">
-                                    <div class="card-body p-4">
-                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block">
-                                        <h5 class="fs-17 mt-3 mb-2">Nancy Martino</h5>
-                                        <p class="text-muted fs-13 mb-3">Creative Designer</p>
+                            @foreach($mentors as $mentor)
+                                <div class="swiper-slide">
+                                    <div class="card text-center">
+                                        <div class="card-body p-4">
+                                            <img src="{{ $mentor->image }}" alt="" class="rounded-circle avatar-md mx-auto d-block">
+                                            <h5 class="fs-17 mt-3 mb-2">{{ $mentor->full_name }}</h5>
+                                            <p class="text-muted fs-13 mb-3">{{ $mentor->profile->job_title }}</p>
 
-                                        <p class="text-muted mb-4 fs-14">
-                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Escondido, California
-                                        </p>
+                                            <p class="text-muted mb-4 fs-14">
+                                                <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> {{ $mentor->profile->location }}
+                                            </p>
 
-                                        <a href="#!" class="btn btn-primary w-100">View Profile</a>
+                                            <a href="{{ route('frontend.mentor.find', ['slug' => $mentor->slug]) }}" class="btn btn-primary w-100">View Profile</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card text-center">
-                                    <div class="card-body p-4">
-                                        <img src="assets/images/users/avatar-3.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block">
-                                        <h5 class="fs-17 mt-3 mb-2">Glen Matney</h5>
-                                        <p class="text-muted fs-13 mb-3">Marketing Director</p>
-
-                                        <p class="text-muted mb-4 fs-14">
-                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Escondido, California
-                                        </p>
-
-                                        <a href="#!" class="btn btn-primary w-100">View Profile</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card text-center">
-                                    <div class="card-body p-4">
-                                        <img src="assets/images/users/avatar-10.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block">
-                                        <h5 class="fs-17 mt-3 mb-2">Alexis Clarke</h5>
-                                        <p class="text-muted fs-13 mb-3">Product Manager</p>
-
-                                        <p class="text-muted mb-4 fs-14">
-                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Escondido, California
-                                        </p>
-
-                                        <a href="#!" class="btn btn-primary w-100">View Profile</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card text-center">
-                                    <div class="card-body p-4">
-                                        <img src="assets/images/users/avatar-8.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block" />
-                                        <h5 class="fs-17 mt-3 mb-2">James Price</h5>
-                                        <p class="text-muted fs-13 mb-3">Product Designer</p>
-
-                                        <p class="text-muted mb-4 fs-14">
-                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Escondido, California
-                                        </p>
-
-                                        <a href="#!" class="btn btn-primary w-100">View Profile</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="card text-center">
-                                    <div class="card-body p-4">
-                                        <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block" />
-                                        <h5 class="fs-17 mt-3 mb-2">Michael Morris</h5>
-                                        <p class="text-muted fs-13 mb-3">Full Stack Developer</p>
-
-                                        <p class="text-muted mb-4 fs-14">
-                                            <i class="ri-map-pin-2-line text-primary me-1 align-bottom"></i> Escondido, California
-                                        </p>
-
-                                        <a href="#!" class="btn btn-primary w-100">View Profile</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -953,6 +895,7 @@
             <!-- end row -->
 
             <div class="row">
+                @foreach($posts as $post)
                 <div class="col-lg-4 col-md-6">
                     <div class="card">
                         <div class="card-body">
@@ -961,16 +904,16 @@
                         <div class="card-body">
                             <ul class="list-inline fs-14 text-muted">
                                 <li class="list-inline-item">
-                                    <i class="ri-calendar-line align-bottom me-1"></i> 30 Oct, 2021
+                                    <i class="ri-calendar-line align-bottom me-1"></i> {{ $post->created_at->diffForHumans() }}
                                 </li>
                                 <li class="list-inline-item">
                                     <i class="ri-message-2-line align-bottom me-1"></i> 364 Comment
                                 </li>
                             </ul>
                             <a href="javascript:void(0);">
-                                <h5>Design your apps in your own way ?</h5>
+                                <h5>{{ $post->title }}</h5>
                             </a>
-                            <p class="text-muted fs-14">One disadvantage of Lorum Ipsum is that in Latin certain letters frequently appear more frequently than others.</p>
+                            <p class="text-muted fs-14">{{ $post->description }}.</p>
 
                             <div>
                                 <a href="#!" class="link-success">Learn More <i class="ri-arrow-right-line align-bottom ms-1"></i></a>
@@ -978,56 +921,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="assets/images/small/img-6.jpg" alt="" class="img-fluid rounded" />
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-inline fs-14 text-muted">
-                                <li class="list-inline-item">
-                                    <i class="ri-calendar-line align-bottom me-1"></i> 02 Oct, 2021
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="ri-message-2-line align-bottom me-1"></i> 245 Comment
-                                </li>
-                            </ul>
-                            <a href="javascript:void(0);">
-                                <h5>Smartest Applications for Business ?</h5>
-                            </a>
-                            <p class="text-muted fs-14">Due to its widespread use as filler text for layouts, non-readability is of great importance: human perception.</p>
-
-                            <div>
-                                <a href="#!" class="link-success">Learn More <i class="ri-arrow-right-line align-bottom ms-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="assets/images/small/img-9.jpg" alt="" class="img-fluid rounded" />
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-inline fs-14 text-muted">
-                                <li class="list-inline-item">
-                                    <i class="ri-calendar-line align-bottom me-1"></i> 23 Sept, 2021
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="ri-message-2-line align-bottom me-1"></i> 354 Comment
-                                </li>
-                            </ul>
-                            <a href="javascript:void(0);">
-                                <h5>How apps is changing the IT world</h5>
-                            </a>
-                            <p class="text-muted fs-14">Intrinsically incubate intuitive opportunities and real-time potentialities Appropriately communicate one-to-one technology.</p>
-
-                            <div>
-                                <a href="#!" class="link-success">Learn More <i class="ri-arrow-right-line align-bottom ms-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
         </div>
