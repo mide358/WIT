@@ -2,11 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
 use App\Models\Post;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -16,13 +18,18 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $users = User::factory(100)->create();
-        $users->each(function ($user) {
+        $countries = Country::pluck('id')->toArray();
+
+        $users->each(function ($user) use($countries) {
             // Create a profile for the user
+            $randomNumber = rand(1, 5);
+
+
             Profile::factory()->create([
                 'user_id' => $user->id,
                 'company' => fake()->company(),
                 'job_title' => fake()->jobTitle(),
-                'location' => fake()->country(),
+                'country_id' => $randomNumber,
                 'category_id' => fake()->randomDigit(),
                 'bio' => fake()->text(),
                 'linkedin' =>fake()->url(),
@@ -39,7 +46,6 @@ class UserSeeder extends Seeder
                 'description' => fake()->text(),
                 'slug' => fake()->slug(),
             ]);
-
         });
     }
 }

@@ -32,6 +32,8 @@ class StoreUserRequest extends FormRequest
             'password' => ['required', 'string', Password::min(8)->letters()->mixedCase()->numbers()->symbols()],
             'role' => 'required|string',
             'profile_photo' => 'required|image|mimes:png,jpg,jpeg',
+            'interests' => 'required|array',
+
         ];
         if(request()->role === RoleEnums::MENTOR->value){
             $rules['company'] = 'required|string';
@@ -41,7 +43,6 @@ class StoreUserRequest extends FormRequest
             $rules['bio'] = 'required|string';
             $rules['linkedin'] = 'required|string';
             $rules['twitter'] = 'sometimes|string';
-            $rules['interests'] = 'required|array';
         }
         return $rules;
     }

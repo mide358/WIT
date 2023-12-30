@@ -15,13 +15,22 @@
                         <p class="lead text-muted lh-base mb-4">Welcome to Women in Tech Mentorship Hub! Connecting bright minds with experienced mentors for empowering guidance and growth in the tech industry.</p>
                         <form action="#" class="job-panel-filter">
                             <div class="row g-md-0 g-2">
-                                <div class="col-md-8">
+                                <div class="col-md-4">
                                     <div>
-                                        <input type="search" id="job-title" class="form-control filter-input-box" placeholder="Find a mentor...">
+                                        <input type="search" id="job-title" class="form-control filter-input-box" placeholder="Search by Role...">
                                     </div>
                                 </div>
                                 <!--end col-->
-
+                                <div class="col-md-4">
+                                    <div>
+                                        <select class="form-control" data-choices="">
+                                            <option value="">Select location</option>
+                                            @foreach($countries as $country)
+                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <!--end col-->
                                 <div class="col-md-4">
                                     <div class="h-100">
@@ -52,7 +61,7 @@
                                         <i class="ri-mail-send-line"></i>
                                     </div>
                                 </div>
-                                <h5 class="fs-15 lh-base mb-0">Connect on WIT</h5>
+                                <h5 class="fs-15 lh-base mb-0">Connect on Social Learn</h5>
                             </div>
                         </div>
 
@@ -194,7 +203,7 @@
                                         <i class="ri-briefcase-2-line"></i>
                                     </div>
                                 </div>
-                                <h5 class="fs-15 lh-base mb-0">Search Over <span class="text-secondary fw-semibold">1,00,000+</span> Jobs</h5>
+                                <h5 class="fs-15 lh-base mb-0">Search Over <span class="text-secondary fw-semibold">1,00,000+</span> Mentors</h5>
                             </div>
                         </div>
 
@@ -266,7 +275,7 @@
                         </div>
 
                         <div>
-                            <a href="#!" class="btn btn-primary">Find Your Jobs <i class="ri-arrow-right-line align-bottom ms-1"></i></a>
+                            <a href="#!" class="btn btn-primary">Find Your Mentors <i class="ri-arrow-right-line align-bottom ms-1"></i></a>
                         </div>
                     </div>
                 </div>
@@ -377,7 +386,7 @@
                 <!-- end col -->
                 <div class="col-sm-auto">
                     <div>
-                        <a href="#!" class="btn bg-gradient btn-danger">Create Free Account</a>
+                        <a href="{{ route('register.get') }}" class="btn bg-gradient btn-danger">Create Free Account</a>
                     </div>
                 </div>
                 <!-- end col -->
@@ -729,7 +738,6 @@
         </div>
     </section>
 
-    <!-- start find jobs -->
     <section style="display:none" class="section">
         <div class="container">
             <div class="row align-items-center gy-4">
@@ -835,7 +843,6 @@
         </div>
         <!-- end container -->
     </section>
-    <!-- end find jobs -->
 
     <!-- start candidates -->
     <section class="section bg-light" id="candidates">
@@ -928,33 +935,6 @@
         <!-- end container -->
     </section>
     <!-- end blog -->
-
-    <!-- start cta -->
-    <section class="py-5 bg-primary position-relative">
-        <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
-        <div class="container">
-            <div class="row align-items-center gy-4">
-                <div class="col-sm">
-                    <div>
-                        <h4 class="text-white fw-bold">Get Latest News!</h4>
-                        <p class="text-white-75 mb-0">Subscribe to our newsletter.</p>
-                    </div>
-                </div>
-                <!-- end col -->
-                <div class="col-sm-auto">
-                    <button class="btn btn-secondary" type="button">Subscribe Now <i class="ri-arrow-right-line align-bottom"></i></button>
-                </div>
-                <!-- end col -->
-            </div>
-            <!-- end row -->
-        </div>
-        <!-- end container -->
-    </section>
-    <!-- end cta -->
-
-    <!-- Start footer -->
-
-    <!-- end footer -->
 
     <!--start back-to-top-->
 

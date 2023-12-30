@@ -11,12 +11,12 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         if($user->isMentor()){
-            return redirect()->intended('frontend.mentors.dashboard.index');
+            return redirect()->route('frontend.mentors.dashboard.index');
         }else if($user->isLearner()){
             if($user->skpReview === false){
-                return redirect()->intended('frontend.learners.suggestions');
+                return redirect()->route('frontend.learners.suggestions');
             }
-            return redirect()->intended('frontend.mentors.dashboard.index');
+            return redirect()->route('frontend.learners.dashboard.index');
         }
     }
 

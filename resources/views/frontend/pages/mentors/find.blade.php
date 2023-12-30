@@ -54,7 +54,7 @@
                                     </tr>
                                     <tr>
                                         <th><span class="fw-medium">Location</span></th>
-                                        <td>{{ $mentor->profile->location }}</td>
+                                        <td>{{ ($mentor->profile->country) ? $mentor->profile->country->name : '' }}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -237,8 +237,7 @@
                                     Messages</button>
                             </div>
                         </form>
-                    </div>
-                    <!--end card-body-->
+                    </div>                    <!--end card-body-->
                 </div>
                 <!--end card-->
             </div>
@@ -248,7 +247,7 @@
                         <h5 class="card-title mb-3">About</h5>
                         <p>{{ $mentor->profile->bio }}</p>
                         <div class="row">
-                            <div class="col-6 col-md-4">
+                            <div class="col-4 col-md-4">
                                 <div class="d-flex mt-4">
                                     <div class="flex-shrink-0 avatar-xs align-self-center me-3">
                                         <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
@@ -262,7 +261,7 @@
                                 </div>
                             </div>
                             <!--end col-->
-                            <div class="col-6 col-md-4">
+                            <div class="col-4 col-md-4">
                                 <div class="d-flex mt-4">
                                     <div class="flex-shrink-0 avatar-xs align-self-center me-3">
                                         <div class="avatar-title bg-light rounded-circle fs-16 text-primary">
@@ -275,6 +274,33 @@
                                     </div>
                                 </div>
                             </div>
+                            @auth
+                            @if(Auth::check() && (Auth::user()->slug !== $mentor->slug))
+                            <div class="col-4 col-md-4">
+                                <form action="{{ route('frontend.mentor.connect') }}" method="POST">
+                                    @csrf
+                                    <div class="d-flex mt-4">
+                                        <div class="flex-shrink-0 avatar-xs align-self-center me-3">
+                                            <div class="av  mary">
+                                                &nbsp;
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <input type="hidden" name="slug" value="{{$mentor->slug}}">
+                                            @if(empty($following))
+                                                <input type="hidden" name="isAccepted" value="0">
+                                                <button type="submit" class="btn btn-primary form-control fw-semibold">Connect</button>
+                                            @else
+                                                <input type="hidden" name="isAccepted" value="{{ $following->id }}">
+                                                <span class="text-{{ ($following->isAccepted)  ? 'primary' : 'danger' }}"><strong>{{ ($following->isAccepted) ? $mentor->first_name . ' connects with you' : $mentor->first_name .' has not accepted your request'  }}</strong></span>
+                                                <button type="submit" class="btn btn-secondary form-control fw-semibold">Disconnect</button>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            @endif
+                            @endauth
                             <!--end col-->
                         </div>
                         <!--end row-->

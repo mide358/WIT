@@ -23,7 +23,7 @@ class ProfileFactory extends Factory
             'user_id' => fake()->randomElement($userIds),
             'company' => fake()->company(),
             'job_title' => fake()->jobTitle(),
-            'location' => fake()->country(),
+            'country_id' => fake()->randomDigit([1,2,3,4,5]),
             'category_id' => fake()->randomDigit(),
             'bio' =>fake()->text(),
             'linkedin' =>fake()->url(),

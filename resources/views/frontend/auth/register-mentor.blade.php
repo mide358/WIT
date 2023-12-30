@@ -148,7 +148,7 @@
                                                     <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                                                 @endif
                                             </div>
-                                            <div class="mb-3">
+                                            <div class="mt-3">
                                                 <label class="form-label" for="steparrow-gen-info-password-input">Password</label>
                                                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="steparrow-gen-info-password-input" value="{{ old('password') }}" placeholder="Enter password" required >
                                                 @if($errors->has('password'))
@@ -189,9 +189,13 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="steparrow-gen-info-location-input">Location</label>
-                                                        <input type="text" class="form-control @error('location') is-invalid @enderror" name="location" id="steparrow-gen-info-location-input" value="{{ old('location') }}" placeholder="Enter location" required >
-                                                        @if($errors->has('location'))
-                                                            <span class="text-danger">{{ $errors->first('location') }}</span>
+                                                        <select name="country_id" id="country_id" class="form-control">
+                                                            @foreach($countries as $country)
+                                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @if($errors->has('country_id'))
+                                                            <span class="text-danger">{{ $errors->first('country_id') }}</span>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -223,7 +227,7 @@
                                                     <span class="text-danger">{{ $errors->first('bio') }}</span>
                                                 @endif
                                             </div>
-                                            <div class="row">
+                                            <div class="row mt-3">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="steparrow-gen-info-location-input">LinkedIn</label>
@@ -261,9 +265,9 @@
                     </div>
                     <!-- end card -->
                     <div class="mt-4 text-center">
-                        <p class="mb-0">ALready have an account ? </p>
+                        <p class="mb-0">Aready have an account ? </p>
                         <p>
-                            <a href="{{ route('login.get') }}" class="fw-semibold text-primary text-decoration-underline"> Sign in to your account </a> or
+                            <a href="{{ route('login.get') }}" class="fw-semibold text-primary text-decoration-underline"> Sign in to your account </a>
                         </p>
                     </div>
 

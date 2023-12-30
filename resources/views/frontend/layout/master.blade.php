@@ -41,6 +41,7 @@
 
 @include('frontend.layout.script-js')
 <!-- JAVASCRIPT -->
+@yield('script')
 </body>
 
 </html>

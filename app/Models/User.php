@@ -123,6 +123,11 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
+    public function forums()
+    {
+        return $this->hasMany(Forum::class);
+    }
+
 
     public static function storeUser($request)
     {
@@ -148,7 +153,7 @@ class User extends Authenticatable
                 $user->profile()->create([
                     'company' => $request->company,
                     'job_title' => $request->job_title,
-                    'location' => $request->location,
+                    'country_id' => $request->country_id,
                     'category_id' => 2,
                     'bio' => $request->bio,
                     'linkedin' => $request->linkedin,

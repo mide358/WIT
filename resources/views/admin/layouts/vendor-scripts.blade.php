@@ -9,5 +9,11 @@
 <script src="{{ URL::asset('build/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
 <script src="{{ URL::asset('build/js/plugins.js') }}"></script>
 
+<!-- Dashboard init -->
+<script src="{{ URL::asset('assets/js/pages/dashboard-job.init.js') }}"></script>
+
+<!-- App js -->
+<script src="{{ URL::asset('assets/js/app.js') }}"></script>
+
 @yield('script')
 @yield('script-bottom')

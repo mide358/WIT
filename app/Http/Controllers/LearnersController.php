@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Interest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -24,7 +25,6 @@ class LearnersController extends Controller
 
     public function suggestions()
     {
-
         $user = User::find(23)->first();
         $interests = User::find(23)->with('interests')->first();
         //$user = auth()->user();
@@ -34,22 +34,22 @@ class LearnersController extends Controller
 
     public function connections()
     {
-        return view('frontend.pages.learners.dashboard.connections');
-        $learner = User::whereSlug($slug)->first();
-        if ($learner) {
-            $followers = $learner->followers()->get();
-        }
+        $learner = auth()->user();
+        $connections = $learner->following()->get();
+        return view('frontend.pages.learners.dashboard.connections', ['connections' => $connections]);
     }
 
     public function messages()
     {
         return view('frontend.pages.learners.dashboard.messages');
-
     }
 
     public function profile()
     {
-        return view('frontend.pages.learners.dashboard.profile');
+        $interests = Interest::enabled()->get();
+        $userInterestsIds = User::with('interests:id')->findOrFail(auth()->user()->id)->interests->pluck('id')->toArray();
+
+        return view('frontend.pages.learners.dashboard.profile', ['interests' => $interests, 'userInterests' => $userInterestsIds]);
     }
 
 }

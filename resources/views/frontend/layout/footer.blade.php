@@ -5,7 +5,7 @@
             <div class="col-sm-6">
                 <div>
                     <p class="copy-rights mb-0">
-                        <script> document.write(new Date().getFullYear()) </script> © WIT
+                        <script> document.write(new Date().getFullYear()) </script> © Social Learn
                     </p>
                 </div>
             </div>
@@ -25,5 +25,9 @@
                 </div>
             </div>
         </div>
+        <div class="row text-center text-sm-start align-items-center mt-5">
+            &nbsp;
+        </div>
+
     </div>
 </footer>

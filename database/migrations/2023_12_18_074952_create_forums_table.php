@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
             $table->string('description');
             $table->bigInteger('parent_id');
             $table->foreignId('user_id');
+            $table->string('slug');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

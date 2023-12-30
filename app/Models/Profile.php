@@ -13,7 +13,7 @@ class Profile extends Model
         'user_id',
         'company',
         'job_title',
-        'location',
+        'country_id',
         'category_id',
         'bio',
         'linkedin',
@@ -26,5 +26,10 @@ class Profile extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }

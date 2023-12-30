@@ -7,4 +7,6 @@ enum StatusEnums:string{
     case DISABLED = 'disabled';
     case BANNED = 'banned';
 
+    case PROCESSED = 'processed';
+
 }

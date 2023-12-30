@@ -8,17 +8,32 @@
     <section class=" mt-5" id="" style="margin-right: 5%">
         <div class="container mt-10">
             <div class="row mb-5">
+
                 <div class="card-body border-bottom-dashed border-bottom">
                     <form>
                         <div class="row g-3">
-                            <div class="col-xl-6">
-                                <div class="search-box">
-                                    <input type="text" class="form-control search" placeholder="Search for skill, user, job title...">
-                                    <i class="ri-search-line search-icon"></i>
+                            <div class="col-xl-5">
+                                <div>
+                                    <select class="form-control" data-choices="">
+                                        <option value="">Select Skills</option>
+                                        @foreach($skills as $skill)
+                                            <option value="{{ $skill->id }}">{{ $skill->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div>
+                                    <select class="form-control" data-choices="">
+                                        <option value="">Select location</option>
+                                        @foreach($countries as $country)
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <!--end col-->
-                            <div class="col-xl-4">
+                            <div class="col-xl-3">
                                 <div class="row g-3">
                                     <div class="col-sm-8">
                                         <div>
@@ -101,8 +116,8 @@
                 </div>
             </div>
             <div class="col-sm-auto">
-                <div style="float:right">
-                    {{ $mentors->links() }}
+                <div id="pagination-links justify-content-end">
+                    {{ $mentors->links('pagination::bootstrap-4') }}
                 </div>
             </div>
         </div>
