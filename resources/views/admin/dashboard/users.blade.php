@@ -68,23 +68,30 @@
                                     <tr>
                                         <th class="sort" data-sort="risk_code">#</th>
                                         <th class="sort" data-sort="color_code">Name</th>
-                                        <th class="sort" data-sort="value">Status</th>
-                                        <th class="sort" data-sort="date">Date Added</th>
+                                        <th class="sort" data-sort="value">Email</th>
+                                        <th class="sort" data-sort="date">Username</th>
+                                        <th class="sort" data-sort="action">Phone Number</th>
+                                        <th class="sort" data-sort="action">Type</th>
+                                        <th class="sort" data-sort="action">Created At</th>
                                         <th class="sort" data-sort="action">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    @foreach($skills as $i => $skill)
+                                    @foreach($users as $i => $user)
                                         <tr>
                                             <td>{{ $i  }}</td>
-                                            <td>{{ $skill->name }}</td>
-                                            <td>{{ $skill->status  }}</td>
-                                            <td>{{ $skill->created_at->toFormattedDateString() }}</td>
+                                            <td>{{ $user->full_name }}</td>
+                                            <td>{{ $user->email  }}</td>
+                                            <td>{{ $user->username }}</td>
+                                            <td>{{ $user->phone_number  }}</td>
+                                            <td>{{ $user->role }}</td>
+
+                                            <td>{{ $user->created_at->toFormattedDateString() }}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">
-                                                        <a href="{{ route('admin.skills.edit',['id' => $skill->id]) }}" class="btn btn-primary"><i class="ri-edit-line"></i></a>
+                                                        <a href="#" class="btn btn-primary"><i class="ri-edit-line"></i></a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -92,8 +99,15 @@
                                     @endforeach
 
                                     </tbody>
+
                                 </table>
+
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div id="pagination-links justify-content-end">
+                            {{ $users->links('pagination::bootstrap-4') }}
                         </div>
                     </div>
                     <!--end col-->

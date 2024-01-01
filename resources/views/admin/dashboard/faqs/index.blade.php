@@ -55,8 +55,8 @@
                                 <div class="pull-left">
 
                                     <div class="mb-2" style="float: right;">
-                                        <a href="{{ route('admin.skills.create') }}" class="btn btn-danger add-btn">
-                                            <i class="ri-error-warning-line align-bottom me-1"></i> Create New Skill
+                                        <a href="{{ route('admin.faqs.create') }}" class="btn btn-danger add-btn">
+                                            <i class="ri-error-warning-line align-bottom me-1"></i> Create New FAQs
                                         </a>
                                         &nbsp;
                                     </div>
@@ -68,6 +68,8 @@
                                     <tr>
                                         <th class="sort" data-sort="risk_code">#</th>
                                         <th class="sort" data-sort="color_code">Name</th>
+                                        <th class="sort" data-sort="color_code">Content</th>
+                                        <th class="sort" data-sort="color_code">Type</th>
                                         <th class="sort" data-sort="value">Status</th>
                                         <th class="sort" data-sort="date">Date Added</th>
                                         <th class="sort" data-sort="action">Action</th>
@@ -75,16 +77,19 @@
                                     </thead>
                                     <tbody>
 
-                                    @foreach($skills as $i => $skill)
+                                    @foreach($faqs as $i => $faq)
                                         <tr>
                                             <td>{{ $i  }}</td>
-                                            <td>{{ $skill->name }}</td>
-                                            <td>{{ $skill->status  }}</td>
-                                            <td>{{ $skill->created_at->toFormattedDateString() }}</td>
+                                            <td>{{ $faq->name }}</td>
+                                            <td>{{ $faq->content }}</td>
+                                            <td>{{ $faq->type }}</td>
+
+                                            <td>{{ $faq->status  }}</td>
+                                            <td>{{ $faq->created_at->toFormattedDateString() }}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">
-                                                        <a href="{{ route('admin.skills.edit',['id' => $skill->id]) }}" class="btn btn-primary"><i class="ri-edit-line"></i></a>
+                                                        <a href="#" class="btn btn-primary"><i class="ri-edit-line"></i></a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -94,6 +99,11 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div id="pagination-links justify-content-end">
+                            {{ $faqs->links('pagination::bootstrap-4') }}
                         </div>
                     </div>
                     <!--end col-->

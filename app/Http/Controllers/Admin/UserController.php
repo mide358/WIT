@@ -11,7 +11,7 @@ class UserController extends Controller
     //
     public function index()
     {
-        return view('admin.users.index', ['data' => User::get()]);
+        return view('admin.dashboard.users', ['users' => User::paginate(10)]);
     }
 
     /**

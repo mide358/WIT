@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\LoginController as AdminLogin;
+use App\Http\Controllers\Admin\SkillsController as AdminSkills;
+use App\Http\Controllers\Admin\UserController as AdminUsers;
+use App\Http\Controllers\Admin\FaqController as AdminFaqs;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForumController;
@@ -83,6 +86,17 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin.dashboard');
         Route::get('/logout', [AdminLogin::class, 'logout'])->name('admin.logout');
+        Route::get('/users', [AdminUsers::class, 'index'])->name('admin.users.index');
+        Route::get('/skills', [AdminSkills::class, 'index'])->name('admin.skills.index');
+        Route::get('/skills/create', [AdminSkills::class, 'create'])->name('admin.skills.create');
+        Route::post('/skills/create', [AdminSkills::class, 'store'])->name('admin.skills.store');
+        Route::get('/skills/edit/{id}', [AdminSkills::class, 'edit'])->name('admin.skills.edit');
+        Route::post('/skills/edit/{id}', [AdminSkills::class, 'update'])->name('admin.skills.update');
+        Route::get('/faqs', [AdminFaqs::class, 'index'])->name('admin.faqs.index');
+        Route::get('/faqs/create', [AdminFaqs::class, 'create'])->name('admin.faqs.create');
+        Route::post('/faqs/create', [AdminFaqs::class, 'store'])->name('admin.faqs.store');
+        Route::get('/faq/edit/{id}', [AdminFaqs::class, 'edit'])->name('admin.faq.edit');
+        Route::post('/faq/edit/{id}', [AdminFaqs::class, 'update'])->name('admin.faq.update');
     });
 });
 

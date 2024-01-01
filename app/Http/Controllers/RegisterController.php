@@ -28,7 +28,9 @@ class RegisterController extends Controller
         try{
             $user = User::storeUser($request);
 
-            return redirect()->back()->with('success', 'Account Created Successfully!');
+            if($user) {
+                return redirect()->back()->with('success', 'Account Created Successfully!');
+            }
         }catch(\Exception $e){
             return back()->withErrors(['error' => 'Unable to create account']);
         }

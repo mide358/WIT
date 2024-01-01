@@ -38,14 +38,20 @@
                     </a>
                 </li> <!-- end Dashboard Menu -->
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarUsers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarUser">
+                    <a class="nav-link menu-link" href="{{ route('admin.users.index') }}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarUser">
                         <i class="ri-apps-2-line"></i> <span>Users</span>
                     </a>
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarAttendance" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
+                    <a href="{{ route('admin.skills.index') }}" class="nav-link menu-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSkill">
                         <i class="ri-apps-2-line"></i> <span>Skills</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('admin.faqs.index') }}" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarFAQs">
+                        <i class="ri-apps-2-line"></i> <span>FAQs</span>
                     </a>
 
                 </li>

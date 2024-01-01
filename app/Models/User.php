@@ -144,7 +144,7 @@ class User extends Authenticatable
                 'password' => Hash::make($request->password),
                 'role' => $request->role,
                 'profile_photo' => $photo,
-                'status' => StatusEnums::ENABLED,
+                'status' => StatusEnums::ENABLED->value,
                 'slug' => Str::slug($request->input('username'), "-")
 
             ]);
