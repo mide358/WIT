@@ -10,4 +10,9 @@ class Follow extends Model
     use HasFactory;
 
     protected $fillable = ['learner_id', 'mentor_id', 'isAccepted'];
+
+    public function learner()
+    {
+        return $this->belongsTo(User::class, 'learner_id');
+    }
 }

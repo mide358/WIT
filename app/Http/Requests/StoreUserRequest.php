@@ -33,6 +33,8 @@ class StoreUserRequest extends FormRequest
             'role' => 'required|string',
             'profile_photo' => 'required|image|mimes:png,jpg,jpeg',
             'interests' => 'required|array',
+            'secret_question' => 'required',
+            'secret_answer' => 'required',
 
         ];
         if(request()->role === RoleEnums::MENTOR->value){

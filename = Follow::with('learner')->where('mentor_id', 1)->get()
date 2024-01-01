@@ -1,0 +1,32 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#7299
+    [34mall[39m: [
+      [34;4mApp\Models\Follow[39;24m {#7298
+        [34mid[39m: [35m1[39m,
+        [34mlearner_id[39m: [35m100[39m,
+        [34mmentor_id[39m: [35m1[39m,
+        [34misAccepted[39m: [35m0[39m,
+        [34mcreated_at[39m: "[32m2023-12-30 07:44:57[39m",
+        [34mupdated_at[39m: "[32m2023-12-30 07:44:57[39m",
+        [34mlearner[39m: [34;4mApp\Models\User[39;24m {#7304
+          [34mid[39m: [35m100[39m,
+          [34musername[39m: "[32mrozella32[39m",
+          [34mfirst_name[39m: "[32mMoshood[39m",
+          [34mlast_name[39m: "[32mAdekunle[39m",
+          [34memail[39m: "[32mamoshood45@gmail.com[39m",
+          [34mphone_number[39m: "[32m07423006650[39m",
+          [34mprofile_photo[39m: "[32mhttps://via.placeholder.com/640x480.png/006655?text=nobis[39m",
+          #[33mpassword[39m: "[32m$2y$12$ZkHtTbh7LTQ7xNmoTQerH.xgkLbs1g7k46CdYCj0.kgdDDL80Niwq[39m",
+          [34mrole[39m: "[32mLEARNER[39m",
+          [34mslug[39m: "[32min-est-quia-rem-ipsam-nam-molestiae-accusamus-placeat[39m",
+          [34mstatus[39m: "[32mENABLED[39m",
+          #[33mremember_token[39m: "[32mIZopIAPTw3b2PomUjEK3J2ni4EEePDk0UDyRHbZi68PeVMN7xHI6RR3poFAn[39m",
+          [34mcreated_at[39m: "[32m2023-12-29 22:55:07[39m",
+          [34mupdated_at[39m: "[32m2024-01-01 09:42:40[39m",
+          [34mskpReview[39m: [35m1[39m,
+          [34msecret_question[39m: "[32mA[39m",
+          [34msecret_answer[39m: "[32m$2y$12$HgsLUS0tmWefm5w42J/iIu98yzZgeRds4boyAhUWDDvj.V7iNo5fu[39m",
+        },
+      },
+    ],
+  }
+

@@ -13,6 +13,7 @@ use App\Http\Controllers\LearnersController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MentorsController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -36,10 +37,13 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::get('/register', [RegisterController::class, 'index'])->name('register.get');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
 Route::get('/register-mentor', [RegisterController::class, 'mentor'])->name('register.mentor.get');
+
+Route::get('/forgot-password', [PasswordResetController::class, 'index'])->name('forgot.password.get');
+Route::post('/forgot-password', [PasswordResetController::class, 'store'])->name('forgot.password.post');
+
 Route::get('/mentors/explore', [MentorsController::class, 'index'])->name('frontend.mentors.index');
 Route::get('/mentor/{slug}', [MentorsController::class, 'find'])->name('frontend.mentor.find');
 Route::get('/learners/suggestions', [LearnersController::class, 'suggestions'])->name('frontend.learners.suggestions');
-Route::get('/learners/dashboard', [LearnersController::class, 'dashboard'])->name('frontend.learners.dashboard');
 Route::get('/faqs', [HomeController::class, 'faqs'])->name('frontend.faqs');
 Route::get('/contact', [HomeController::class, 'contact'])->name('frontend.contact');
 Route::post('/contact', [HomeController::class, 'postContact'])->name('frontend.contact.post');

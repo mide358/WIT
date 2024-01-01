@@ -48,7 +48,7 @@ class MentorsController extends Controller
         if(auth()->user()->isLearner()){
             return view('frontend.404');
         }
-        return view('frontend.pages.mentors.dashboard.index');
+        return view('frontend.pages.mentors.dashboard');
     }
 
     public function connect(Request $request)
@@ -81,6 +81,6 @@ class MentorsController extends Controller
         if(auth()->user()->isLearner()){
             return redirect()->route('404');
         }
-        return view('frontend.pages.mentors.dashboard.connections');
+        return view('frontend.pages.mentors.dashboard.connections', ['connections' => auth()->user()->followers()->get()]);
     }
 }

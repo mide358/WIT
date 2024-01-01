@@ -17,7 +17,7 @@
             <div class="email-menu-sidebar">
                 <div class="p-4 d-flex flex-column h-100">
                     <div class="pb-4 border-bottom border-bottom-dashed">
-                        <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#composemodal"> <i class="ri-home-3-fill"></i> Home </button>
+                        <a href="{{ route('frontend.learners.dashboard.index') }}" class="btn btn-danger w-100"> <i class="ri-home-3-fill"></i> Home </a>
                     </div>
 
                     <div class="mx-n4 px-4 email-menu-sidebar-scroll simplebar-scrollable-y" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px -24px;">

@@ -33,7 +33,9 @@ class User extends Authenticatable
         'status',
         'slug',
         'profile_photo',
-        'skpReview'
+        'skpReview',
+        'secret_question',
+        'secret_answer'
     ];
 
     /**
@@ -123,6 +125,12 @@ class User extends Authenticatable
             ->withTimestamps();
     }
 
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'mentor_id', 'learner_id');
+    }
+
+
     public function forums()
     {
         return $this->hasMany(Forum::class);
@@ -145,7 +153,9 @@ class User extends Authenticatable
                 'role' => $request->role,
                 'profile_photo' => $photo,
                 'status' => StatusEnums::ENABLED->value,
-                'slug' => Str::slug($request->input('username'), "-")
+                'slug' => Str::slug($request->input('username'), "-"),
+                'secret_question' => $request->secret_question,
+                'secret_answer' => Hash::make($request->secret_answer)
 
             ]);
 

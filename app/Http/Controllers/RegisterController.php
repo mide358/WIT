@@ -29,7 +29,16 @@ class RegisterController extends Controller
             $user = User::storeUser($request);
 
             if($user) {
-                return redirect()->back()->with('success', json_encode($user));
+                $request->session()->regenerate();
+                $user = auth()->user();
+                if($user->role === RoleEnums::LEARNER->value){
+                    if(!$user->skpReview){
+                        return redirect()->route('frontend.learners.suggestions');
+                    }
+                    return redirect()->route('frontend.learners.dashboard.index');
+                }else {
+                    return redirect()->route('frontend.mentors.dashboard.index');
+                }
             }
         }catch(\Exception $e){
             return back()->withErrors(['error' => 'Unable to create account']);

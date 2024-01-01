@@ -20,7 +20,8 @@ class LearnersController extends Controller
             $user = auth()->user();
             $user->update(['skpReview' => true]);
         }
-        return view('frontend.pages.learners.dashboard',['skip' => $request->get('skip')]);
+        $mentors = User::with('interests', 'profile')->mentor()->take(4)->get();
+        return view('frontend.pages.learners.dashboard',['skip' => $request->get('skip'), 'mentors' => $mentors]);
     }
 
     public function suggestions()

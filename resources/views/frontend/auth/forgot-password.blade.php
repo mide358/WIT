@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Women In Tech | Login Page</title>
+    <title>Women In Tech | Forgot Password Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="WIT" name="description" />
     <meta content="WIT" name="author" />
@@ -63,20 +63,17 @@
 
                         <div class="card-body p-4">
                             <div class="text-center mt-2">
-                                <h5 class="text-primary">Welcome Back!</h5>
-                                <p class="text-muted">Sign in to continue to WIT.</p>
+                                <p class="text-muted">Forgot Password Page.</p>
                             </div>
                             <div class="p-2 mt-4">
-                                <form action="{{ route('login.post') }}" method="POST">
+                                @if ($errors->has('error'))
+                                    <div class="alert alert-danger">
+                                        <p>{{ $errors->first('error') }}</p>
+                                        <!-- Additional instructions or suggestions -->
+                                    </div>
+                                @endif
+                                <form action="{{ route('forgot.password.post') }}" method="POST">
                                     @csrf
-                                    @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            @foreach ($errors->all() as $error)
-                                                {{ $error }}
-                                            @endforeach
-                                        </div>
-                                    @endif
-
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter Email Address" required>
@@ -86,27 +83,38 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <div class="float-end">
-                                            <a href="{{ route('forgot.password.get') }}" class="text-muted">Forgot password?</a>
-                                        </div>
-                                        <label class="form-label" for="password-input">Password</label>
+                                        <label class="form-label" for="password-input">Secret Question</label>
                                         <div class="position-relative auth-pass-inputgroup mb-3">
-                                            <input type="password" class="form-control pe-5 password-input @error('password') is-invalid @enderror" placeholder="Enter password" id="password" name="password" required>
-                                            <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
-                                            @if($errors->has('password'))
-                                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                                            @endif
+                                            <select name="secret_question" class="form-control" required>
+                                                @foreach($questions as $q)
+                                                    <option value="{{ $q->name }}">{{ $q->value }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
-                                        <label class="form-check-label" for="auth-remember-check">Remember me</label>
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Secret Answer</label>
+                                        <input type="text" class="form-control @error('secret_answer') is-invalid @enderror" id="email" name="secret_answer" placeholder="Enter Secret Answer" required>
+                                        @if($errors->has('secret_answer'))
+                                            <span class="text-danger">{{ $errors->first('secret_answer') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Enter your new password</label>
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="email" name="password" placeholder="Enter Your new oassword" required>
+                                        @if($errors->has('secret_answer'))
+                                            <span class="text-danger">{{ $errors->first('secret_answer') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Password Confirmation</label>
+                                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confrim your new password" required>
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="btn btn-success w-100" type="submit">Sign In</button>
+                                        <button class="btn btn-success w-100" type="submit">Reset your Password</button>
                                     </div>
+
                                 </form>
                             </div>
                         </div>
@@ -115,10 +123,8 @@
                     <!-- end card -->
 
                     <div class="mt-4 text-center">
-                        <p class="mb-0">Don't have an account ? </p>
                         <p>
-                            <a href="{{ route('register.get') }}" class="fw-semibold text-primary text-decoration-underline"> Sign up as a learner </a> or
-                            <a href="{{ route('register.mentor.get') }}" class="fw-semibold text-primary text-decoration-underline"> apply to be a mentor </a>
+                            <a href="{{ route('login.get') }}" class="fw-semibold text-primary text-decoration-underline"> Sign in </a>
                         </p>
                     </div>
 
@@ -137,7 +143,7 @@
                 <div class="col-lg-12">
                     <div class="text-center">
                         <p class="mb-0 text-muted">&copy;
-                            <script>document.write(new Date().getFullYear())</script>Prototype Dissertation for Women in Tech by Iyimide Adegunloye
+                            <script>document.write(new Date().getFullYear())</script> &nbsp; Prototype Dissertation for Women in Tech by Iyimide Adegunloye
                         </p>
                     </div>
                 </div>

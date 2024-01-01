@@ -20,13 +20,56 @@
             <div class="email-menu-sidebar">
                 <div class="p-4 d-flex flex-column h-100">
                     <div class="pb-4 border-bottom border-bottom-dashed">
-                        <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#composemodal"> <i class="ri-home-3-fill"></i> Home </button>
+                        <a href="{{ route('frontend.learners.dashboard.index') }}" class="btn btn-danger w-100"> <i class="ri-home-3-fill"></i> Home </a>
                     </div>
 
                     <div class="mx-n4 px-4 email-menu-sidebar-scroll simplebar-scrollable-y" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px -24px;">
                         <div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div>
                             @include('frontend.pages.learners.dashboard.sidebar')
 
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="email-content">
+                <div class="p-4 pb-0">
+
+                    <div class="row mb-4">
+                        <h1>Welcome! </h1>
+                        <h3 class="text-center">Popular Mentors!</h3>
+                    </div>
+                    <div class="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 mb-3" id="explorecard-list">
+                            @forelse($mentors as $mentor)
+                                <div class="col list-element">
+                                    <div class="card explore-box card-animate">
+                                        <div class="explore-place-bid-img"><input type="hidden" class="form-control" id="1">
+                                            <div class="d-none"></div>
+                                            <img src="" alt=""
+                                                 class="card-img-top explore-img">
+                                            <div class="bg-overlay"></div>
+                                            <div class="place-bid-btn"><a href="{{ route('frontend.mentor.find', ['slug' => $mentor->slug]) }}" class="btn btn-success"><i
+                                                        class="ri-auction-fill align-bottom me-1"></i> View Profile</a></div>
+                                        </div>
+
+                                        <div class="card-body"><p class="fw-medium mb-0 float-end">{{ $mentor->profile->location}} </p>                    <h5
+                                                class="mb-1"><a href="{{ route('frontend.course.find', ['slug' => $mentor->slug]) }}">{{ $mentor->name }}</a></h5>
+                                            <p class="text-muted mb-0">{{ Str::limit($mentor->full_name) }}</p>
+                                        </div>
+                                        <div class="card-footer border-top border-top-dashed">
+                                            <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i>
+                                            <span style="color:blue">{{ $mentor->profile->job_title}}</span><span class="text-muted"> at </span>
+                                            {{ $mentor->profile->company }}
+                                        </div>
+                                        <div class="card-footer border-top border-top-dashed">
+                                            @foreach($mentor->interests as $interest)
+                                                <span class="badge rounded-pill border border-primary text-body">{{ $mentor->name }}</span>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <h2>No Mentors Found!</h2>
+                            @endforelse
                     </div>
                 </div>
             </div>
