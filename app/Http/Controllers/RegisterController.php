@@ -29,7 +29,7 @@ class RegisterController extends Controller
             $user = User::storeUser($request);
 
             if($user) {
-                return redirect()->back()->with('success', 'Account Created Successfully!');
+                return redirect()->back()->with('success', json_encode($user));
             }
         }catch(\Exception $e){
             return back()->withErrors(['error' => 'Unable to create account']);
@@ -54,7 +54,7 @@ class RegisterController extends Controller
             $user->interests()->sync($interests);
             if (auth()->user()->isMentor()) {
                 $user->profile()->update([
-                    'company' => $request->company,
+                    ';company' => $request->company,
                     'job_title' => $request->job_title,
                     'country_id' => $request->country_id,
                     'category_id' => 2,
