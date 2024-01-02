@@ -63,6 +63,13 @@ class User extends Authenticatable
         return $this->first_name . ' ' . $this->last_name;
     }
 
+    public function messagesSent() {
+        return $this->hasMany(Chat::class, 'sender_id', 'id');
+    }
+
+    public function messagesReceived() {
+        return $this->hasMany(Chat::class, 'receiver_id', 'id');
+    }
 
     public function profile()
     {
@@ -127,7 +134,8 @@ class User extends Authenticatable
 
     public function followers()
     {
-        return $this->belongsToMany(User::class, 'follows', 'mentor_id', 'learner_id');
+        return $this->belongsToMany(User::class, 'follows', 'mentor_id', 'learner_id')
+            ->withPivot('isAccepted');
     }
 
 
@@ -165,6 +173,7 @@ class User extends Authenticatable
                     'job_title' => $request->job_title,
                     'country_id' => $request->country_id,
                     'category_id' => 2,
+                    'website' => ($request->website) ?? null,
                     'bio' => $request->bio,
                     'linkedin' => $request->linkedin,
                     'twitter' => ($request->twitter) ?? null,

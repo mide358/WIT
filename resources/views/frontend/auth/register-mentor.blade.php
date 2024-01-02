@@ -209,17 +209,29 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="steparrow-gen-info-location-input">Skills</label>
-                                                <select class="js-example-basic-multiple form-control" name="interests[]" multiple="multiple" required>
-                                                    @foreach($interests as $interest)
-                                                        <option value="{{ $interest->id }}">{{ $interest->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @if($errors->has('interests'))
-                                                    <span class="text-danger">{{ $errors->first('interests') }}</span>
-                                                @endif
-                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="steparrow-gen-info-location-input">Skills</label>
+                                                        <select class="js-example-basic-multiple form-control" name="interests[]" multiple="multiple" required>
+                                                            @foreach($interests as $interest)
+                                                                <option value="{{ $interest->id }}">{{ $interest->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @if($errors->has('interests'))
+                                                            <span class="text-danger">{{ $errors->first('interests') }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="steparrow-gen-info-email-input">Website</label>
+                                                        <input type="text" class="form-control @error('website') is-invalid @enderror" name="website" id="steparrow-gen-info-category-input" value="{{ old('website') }}" placeholder="Enter website" >
+                                                        @if($errors->has('website'))
+                                                            <span class="text-danger">{{ $errors->first('website') }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             <div>
                                                 <label class="form-label" for="des-info-description-input">Bio</label>
                                                 <textarea class="form-control @error('bio') is-invalid @enderror" value="{{ old('bio') }}" placeholder="Enter Bio" name="bio" id="des-info-bio-input" rows="3" required></textarea>

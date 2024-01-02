@@ -292,7 +292,7 @@
                                                 <button type="submit" class="btn btn-primary form-control fw-semibold">Connect</button>
                                             @else
                                                 <input type="hidden" name="isAccepted" value="{{ $following->id }}">
-                                                <span class="text-{{ ($following->isAccepted)  ? 'primary' : 'danger' }}"><strong>{{ ($following->isAccepted) ? $mentor->first_name . ' connects with you' : $mentor->first_name .' has not accepted your request'  }}</strong></span>
+                                                <span class="text-{{ ($following->isAccepted)  ? 'primary' : 'danger' }}"><strong>{{ ($following->isAccepted) ? $mentor->first_name . ' has connected with you' : $mentor->first_name .' has not accepted your request'  }}</strong></span>
                                                 <button type="submit" class="btn btn-secondary form-control fw-semibold">Disconnect</button>
                                             @endif
                                         </div>

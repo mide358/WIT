@@ -40,6 +40,7 @@ class StoreUserRequest extends FormRequest
         if(request()->role === RoleEnums::MENTOR->value){
             $rules['company'] = 'required|string';
             $rules['job_title'] = 'required|string';
+            $rules['website'] = 'sometimes|string';
             $rules['location'] = 'required|string';
             $rules['category'] = 'required|string';
             $rules['bio'] = 'required|string';

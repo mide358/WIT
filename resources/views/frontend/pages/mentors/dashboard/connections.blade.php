@@ -56,7 +56,17 @@
                                         {{ $connection->profile->company }}
                                     </div>
                                     <div class="card-footer border-top border-top-dashed">
-                                            <a href="#">Accept</a>
+                                        <form action="{{ route('frontend.accept.connect') }}" method="POST">
+                                            @csrf
+                                            @if($connection->pivot->isAccepted)
+                                                <button class="btn btn-danger" type="button">Connected</button>
+                                            @else
+                                                <input type="hidden" name="isAccepted" value="1">
+                                                <input type="hidden" name="slug" value="{{ $connection->slug }}">
+                                                <button class="btn btn-primary" type="submit">Accept</button>
+                                            @endif
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>

@@ -111,12 +111,89 @@
                                         <span class="text-danger">{{ $errors->first('interests') }}</span>
                                     @endif
                                 </div>
-                                <div class="mt-4">
-                                    <button class="btn btn-success w-100" type="submit">Update Profile</button>
-                                </div>
 
                                 <!--end col-->
                             </div>
+                            <div class="row gy-4 mt-4">
+                                <div class="col-xxl-12 col-md-12">
+                                    <h2 class="text-center">Other Details</h2>
+                                </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        <div>
+                                            <label for="basiInput" class="form-label">Company</label>
+                                            <input type="text" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ auth()->user()->profile->company }}" required>
+                                            @if($errors->has('company'))
+                                                <span class="text-danger">{{ $errors->first('company') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-xxl-6 col-md-6">
+                                        <div>
+                                            <label for="labelInput" class="form-label">Job Title</label>
+                                            <input type="text" class="form-control @error('job_title') is-invalid @enderror" name="job_title" placeholder="Job Title" value="{{ auth()->user()->profile->job_title }}" required>
+                                            @if($errors->has('job_title'))
+                                                <span class="text-danger">{{ $errors->first('job_title') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-xxl-6 col-md-6">
+                                        <div>
+                                            <label for="placeholderInput" class="form-label">Location:</label>
+                                            <select class="form-control" name="country_id" required>
+                                                @foreach($countries as $country)
+                                                    <option value="{{ $country->id }}" {{ ($country->id === auth()->user()->profile->country_id) ? 'selected' : ''}}>{{ $country->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if($errors->has('country_id'))
+                                                <span class="text-danger">{{ $errors->first('country_id') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        <div>
+                                            <label for="labelInput" class="form-label">Website</label>
+                                            <input type="text" class="form-control @error('website') is-invalid @enderror" name="website" placeholder="Website" value="{{ auth()->user()->website }}" >
+                                            @if($errors->has('website'))
+                                                <span class="text-danger">{{ $errors->first('website') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-xxl-12 col-md-12">
+                                        <div>
+                                            <label for="valueInput" class="form-label">Bio</label>
+                                            <textarea name="bio" class="form-control" rows="5">{{ auth()->user()->profile->bio }}</textarea>
+                                            @if($errors->has('bio'))
+                                                <span class="text-danger">{{ $errors->first('bio') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-md-6">
+                                        <div>
+                                            <label for="valueInput" class="form-label">LinkedIn</label>
+                                            <input type="text" class="form-control @error('linkedin') is-invalid @enderror" name="linkedin" placeholder="Linked In" value="{{ auth()->user()->profile->linkedin }}" required>
+                                            @if($errors->has('linkedin'))
+                                                <span class="text-danger">{{ $errors->first('linkedin') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                <div class="col-xxl-6 col-md-6">
+                                    <div>
+                                        <label for="valueInput" class="form-label">Twitter</label>
+                                        <input type="text" class="form-control @error('twitter') is-invalid @enderror" name="twitter" placeholder="Twitter Handle" value="{{ auth()->user()->profile->twitter }}" required>
+                                        @if($errors->has('twitter'))
+                                            <span class="text-danger">{{ $errors->first('twitter') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="mt-4 mb-4">
+                                    <button class="btn btn-success w-100" type="submit">Update Profile</button>
+                                </div>
+
+                                    <!--end col-->
+                                </div>
                         </form>
                     </div>
                 </div>

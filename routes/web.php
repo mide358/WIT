@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LoginController as AdminLogin;
 use App\Http\Controllers\Admin\SkillsController as AdminSkills;
 use App\Http\Controllers\Admin\UserController as AdminUsers;
 use App\Http\Controllers\Admin\FaqController as AdminFaqs;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForumController;
@@ -68,18 +69,21 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('learners')->group(function () {
         Route::get('/dashboard', [LearnersController::class, 'dashboard'])->name('frontend.learners.dashboard.index');
         Route::get('/connections', [LearnersController::class, 'connections'])->name('frontend.learners.dashboard.connections');
-        Route::get('/messages', [LearnersController::class, 'messages'])->name('frontend.learners.dashboard.messages');
+        Route::get('/messages/{slug?}', [ChatController::class, 'index'])->name('frontend.learners.dashboard.messages');
         Route::get('/profile', [LearnersController::class, 'profile'])->name('frontend.learners.dashboard.profile');
         Route::get('/courses', [LearnersController::class, 'courses'])->name('frontend.learners.dashboard.courses');
     });
     Route::prefix('mentors')->group(function () {
         Route::get('/dashboard', [MentorsController::class, 'dashboard'])->name('frontend.mentors.dashboard.index');
         Route::get('/connections', [MentorsController::class, 'connections'])->name('frontend.mentors.dashboard.connections');
-        Route::get('/messages', [MentorsController::class, 'messages'])->name('frontend.mentors.dashboard.messages');
+        Route::get('/messages/{slug?}', [ChatController::class, 'index'])->name('frontend.mentors.dashboard.messages');
         Route::get('/profile', [MentorsController::class, 'profile'])->name('frontend.mentors.dashboard.profile');
         Route::get('/courses', [MentorsController::class, 'courses'])->name('frontend.mentors.dashboard.courses');
         Route::post('/connect', [MentorsController::class, 'connect'])->name('frontend.mentor.connect');
+        Route::post('/connect/accept', [MentorsController::class, 'acceptConnect'])->name('frontend.accept.connect');
     });
+
+    Route::post('/messages', [ChatController::class, 'store'])->name('chat.store');
     Route::post('/profile', [RegisterController::class, 'update'])->name('profile.update');
     Route::get('/forum/comment/reply/{id}', [ForumController::class, 'find'])->name('forum.comment.find');
     Route::post('/forum/comment', [ForumController::class, 'store'])->name('forum.comment.post');
