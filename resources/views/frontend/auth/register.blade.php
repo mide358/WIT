@@ -89,7 +89,7 @@
                                                     <div class="">
                                                         <div class="fallback">
                                                             <input type="hidden" name="role" value="{{ $role }}">
-                                                            <input name="profile_photo" class="form-control @error('profile_photo') is-invalid @enderror" type="file" required>
+                                                            <input name="profile_photo" class="form-control @error('profile_photo') is-invalid @enderror" type="file">
                                                             @if($errors->has('profile_photo'))
                                                                 <span class="text-danger">{{ $errors->first('profile_photo') }}</span>
                                                             @endif
@@ -103,14 +103,14 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-lg-6">
-                                            <label for="firstname" class="form-label">First Name: </label>
+                                            <label for="firstname" class="form-label">First Name: <span style="color: red">*</span> </label>
                                             <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" placeholder="Enter first name" value="{{ old('first_name') }}" required>
                                             @if($errors->has('first_name'))
                                                 <span class="text-danger">{{ $errors->first('first_name') }}</span>
                                             @endif
                                         </div>
                                         <div class="col-lg-6">
-                                            <label for="lastname" class="form-label">Last Name:</label>
+                                            <label for="lastname" class="form-label">Last Name:<span style="color: red">*</span> </label>
                                             <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="last_name" name="last_name" placeholder="Enter last name" value="{{ old('lastname') }}" required>
                                             @if($errors->has('last_name'))
                                                 <span class="text-danger">{{ $errors->first('last_name') }}</span>
@@ -119,14 +119,14 @@
 
                                     </div>
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
+                                        <label for="username" class="form-label">Username<span style="color: red">*</span> </label>
                                         <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" placeholder="Enter username" value="{{ old('username') }}" required>
                                         @if($errors->has('username'))
                                             <span class="text-danger">{{ $errors->first('username') }}</span>
                                         @endif
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
+                                        <label for="email" class="form-label">Email<span style="color: red">*</span> </label>
                                         <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter email" value="{{ old('email') }}" required>
                                         @if($errors->has('email'))
                                             <span class="text-danger">{{ $errors->first('email') }}</span>
@@ -134,15 +134,25 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="phone_number" class="form-label">Phone Number</label>
+                                        <label for="phone_number" class="form-label">Phone Number<span style="color: red">*</span> </label>
                                         <input type="text" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" placeholder="Enter phone number" value="{{ old('phone_number') }}" required>
                                         @if($errors->has('phone_number'))
                                             <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                                         @endif
                                     </div>
-
                                     <div class="mb-3">
-                                        <label class="form-label" for="password-input">Password</label>
+                                        <label class="fw-semibold">Skills<span style="color: red">*</span> </label>
+                                        <select class="js-example-basic-multiple" name="interests[]" multiple="multiple" required>
+                                            @foreach($interests as $interest)
+                                                <option value="{{ $interest->id }}">{{ $interest->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('interests'))
+                                            <span class="text-danger">{{ $errors->first('interests') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="password-input">Password<span style="color: red">*</span> </label>
                                         <div class="position-relative auth-pass-inputgroup mb-3">
                                             <input type="password" class="form-control pe-5 password-input @error('password') is-invalid @enderror" name="password" placeholder="Enter password" id="password-input" required>
                                             <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
@@ -151,16 +161,22 @@
                                             @endif
                                         </div>
                                     </div>
-
                                     <div class="mb-3">
-                                        <h6 class="fw-semibold">Skills</h6>
-                                        <select class="js-example-basic-multiple" name="interests[]" multiple="multiple" required>
-                                            @foreach($interests as $interest)
-                                                <option value="{{ $interest->id }}">{{ $interest->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('interests'))
-                                            <span class="text-danger">{{ $errors->first('interests') }}</span>
+                                            <label class="form-label" for="steparrow-gen-info-location-input">Secret Question: <span style="color: red">*</span> </label>
+                                            <select name="secret_question" id="secret_question" class="form-control" required>
+                                                @foreach(\App\Http\Enums\SecretQuestionEnums::cases() as $q)
+                                                    <option value="{{ $q->name }}">{{ $q->value }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if($errors->has('secret_question'))
+                                                <span class="text-danger">{{ $errors->first('secret_question') }}</span>
+                                            @endif
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="steparrow-gen-info-location-input">Secret Answer: <span style="color: red">*</span> </label>
+                                        <input type="password" class="form-control  @error('secret_answer') is-invalid @enderror" name="secret_answer" placeholder="Enter secret answer" id="secret_answer" required>
+                                        @if($errors->has('secret_answer'))
+                                            <span class="text-danger">{{ $errors->first('secret_answer') }}</span>
                                         @endif
                                     </div>
                                     <div class="mt-4">

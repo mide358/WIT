@@ -9,7 +9,9 @@ use App\Models\Country;
 use App\Models\Interest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -29,6 +31,7 @@ class RegisterController extends Controller
             $user = User::storeUser($request);
 
             if($user) {
+                Auth::login($user);
                 $request->session()->regenerate();
                 $user = auth()->user();
                 if($user->role === RoleEnums::LEARNER->value){
@@ -40,7 +43,9 @@ class RegisterController extends Controller
                     return redirect()->route('frontend.mentors.dashboard.index');
                 }
             }
+
         }catch(\Exception $e){
+            Log::info($e->getMessage());
             return back()->withErrors(['error' => 'Unable to create account']);
         }
     }

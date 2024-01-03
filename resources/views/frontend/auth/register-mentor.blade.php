@@ -102,7 +102,7 @@
                                             <div class="mb-3">
                                                 <label for="formFile" class="form-label">Upload Profile Photo</label>
                                                 <input type="hidden" name="role" value="{{ $role }}">
-                                                <input name="profile_photo" class="form-control @error('profile_photo') is-invalid @enderror" type="file" required>
+                                                <input name="profile_photo" class="form-control @error('profile_photo') is-invalid @enderror" type="file">
                                                 @if($errors->has('profile_photo'))
                                                     <span class="text-danger">{{ $errors->first('profile_photo') }}</span>
                                                 @endif
@@ -110,7 +110,7 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="steparrow-gen-info-email-input">First Name</label>
+                                                        <label class="form-label" for="steparrow-gen-info-email-input">First Name:<span style="color: red">*</span> </label>
                                                         <input type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" id="steparrow-gen-info-firstnameinput" value="{{ old('first_name') }}" placeholder="Enter first name" required >
                                                         @if($errors->has('first_name'))
                                                             <span class="text-danger">{{ $errors->first('first_name') }}</span>
@@ -119,7 +119,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="steparrow-gen-info-username-input">Last Name</label>
+                                                        <label class="form-label" for="steparrow-gen-info-username-input">Last Name:<span style="color: red">*</span> </label>
                                                         <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="steparrow-gen-info-lastname-input" value="{{ old('last_name') }}" placeholder="Enter last name" required >
                                                         @if($errors->has('last_name'))
                                                             <span class="text-danger">{{ $errors->first('last_name') }}</span>
@@ -128,31 +128,49 @@
                                                 </div>
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="steparrow-gen-info-username-input">Username</label>
+                                                <label class="form-label" for="steparrow-gen-info-username-input">Username: <span style="color: red">*</span> </label>
                                                 <input type="text" class="form-control @error('username') is-invalid @enderror" id="steparrow-gen-info-username-input" name="username" value="{{ old('username') }}" placeholder="Enter username" required >
                                                 @if($errors->has('username'))
                                                     <span class="text-danger">{{ $errors->first('username') }}</span>
                                                 @endif
                                             </div>
                                             <div class="mb-3">
-                                                <label class="form-label" for="steparrow-gen-info-email-input">Email </label>
+                                                <label class="form-label" for="steparrow-gen-info-email-input">Email:<span style="color: red">*</span> </label>
                                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="steparrow-gen-info-email-input" value="{{ old('email') }}" placeholder="Enter email" required >
                                                 @if($errors->has('email'))
                                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                                 @endif
                                             </div>
                                             <div>
-                                                <label class="form-label" for="steparrow-gen-info-phone-input">Phone Number</label>
+                                                <label class="form-label" for="steparrow-gen-info-phone-input">Phone Number: <span style="color: red">*</span> </label>
                                                 <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" id="steparrow-gen-info-phone-input" value="{{ old('phone_number') }}" placeholder="Enter phone number" required >
                                                 @if($errors->has('phone_number'))
                                                     <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                                                 @endif
                                             </div>
                                             <div class="mt-3">
-                                                <label class="form-label" for="steparrow-gen-info-password-input">Password</label>
+                                                <label class="form-label" for="steparrow-gen-info-password-input">Password: <span style="color: red">*</span> </label>
                                                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="steparrow-gen-info-password-input" value="{{ old('password') }}" placeholder="Enter password" required >
                                                 @if($errors->has('password'))
                                                     <span class="text-danger">{{ $errors->first('password') }}</span>
+                                                @endif
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="steparrow-gen-info-location-input">Secret Question: <span style="color: red">*</span> </label>
+                                                <select name="secret_question" id="secret_question" class="form-control" required>
+                                                    @foreach(\App\Http\Enums\SecretQuestionEnums::cases() as $q)
+                                                        <option value="{{ $q->name }}">{{ $q->value }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if($errors->has('secret_question'))
+                                                    <span class="text-danger">{{ $errors->first('secret_question') }}</span>
+                                                @endif
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="steparrow-gen-info-location-input">Secret Answer: <span style="color: red">*</span> </label>
+                                                <input type="password" class="form-control  @error('secret_answer') is-invalid @enderror" name="secret_answer" placeholder="Enter secret answer" id="secret_answer" required>
+                                                @if($errors->has('secret_answer'))
+                                                    <span class="text-danger">{{ $errors->first('secret_answer') }}</span>
                                                 @endif
                                             </div>
 
@@ -168,7 +186,7 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="steparrow-gen-info-email-input">Company</label>
+                                                        <label class="form-label" for="steparrow-gen-info-email-input">Company: <span style="color: red">*</span> </label>
                                                         <input type="text" class="form-control @error('company') is-invalid @enderror" name="company" id="steparrow-gen-info-company-input" placeholder="Enter company name" value="{{ old('company') }}" required >
                                                         @if($errors->has('company'))
                                                             <span class="text-danger">{{ $errors->first('company') }}</span>
@@ -177,7 +195,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="steparrow-gen-info-username-input">Job TItle</label>
+                                                        <label class="form-label" for="steparrow-gen-info-username-input">Job Title:<span style="color: red">*</span> </label>
                                                         <input type="text" class="form-control @error('job_title') is-invalid @enderror" name="job_title" id="steparrow-gen-info-jon_title-input" value="{{ old('job_title') }}" placeholder="Enter Job title" required >
                                                         @if($errors->has('job_title'))
                                                             <span class="text-danger">{{ $errors->first('job_title') }}</span>
@@ -188,7 +206,7 @@
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="steparrow-gen-info-location-input">Location</label>
+                                                        <label class="form-label" for="steparrow-gen-info-location-input">Location: <span style="color: red">*</span> </label>
                                                         <select name="country_id" id="country_id" class="form-control">
                                                             @foreach($countries as $country)
                                                                 <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -201,7 +219,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="steparrow-gen-info-email-input">Category</label>
+                                                        <label class="form-label" for="steparrow-gen-info-email-input">Category: <span style="color: red">*</span> </label>
                                                         <input type="text" class="form-control @error('category') is-invalid @enderror" name="category" id="steparrow-gen-info-category-input" value="{{ old('category') }}" placeholder="Enter company name" required >
                                                         @if($errors->has('category'))
                                                             <span class="text-danger">{{ $errors->first('category') }}</span>
@@ -212,7 +230,7 @@
                                             <div class="row mt-3">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="steparrow-gen-info-location-input">Skills</label>
+                                                        <label class="form-label" for="steparrow-gen-info-location-input">Skill</label>s : <span style="color: red">*</span> </label>
                                                         <select class="js-example-basic-multiple form-control" name="interests[]" multiple="multiple" required>
                                                             @foreach($interests as $interest)
                                                                 <option value="{{ $interest->id }}">{{ $interest->name }}</option>
@@ -225,7 +243,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="steparrow-gen-info-email-input">Website</label>
+                                                        <label class="form-label" for="steparrow-gen-info-email-input">Website </label>
                                                         <input type="text" class="form-control @error('website') is-invalid @enderror" name="website" id="steparrow-gen-info-category-input" value="{{ old('website') }}" placeholder="Enter website" >
                                                         @if($errors->has('website'))
                                                             <span class="text-danger">{{ $errors->first('website') }}</span>
@@ -233,7 +251,7 @@
                                                     </div>
                                                 </div>
                                             <div>
-                                                <label class="form-label" for="des-info-description-input">Bio</label>
+                                                <label class="form-label" for="des-info-description-input">Bio<: <span style="color: red">*</span> </label>
                                                 <textarea class="form-control @error('bio') is-invalid @enderror" value="{{ old('bio') }}" placeholder="Enter Bio" name="bio" id="des-info-bio-input" rows="3" required></textarea>
                                                 @if($errors->has('bio'))
                                                     <span class="text-danger">{{ $errors->first('bio') }}</span>
@@ -242,7 +260,7 @@
                                             <div class="row mt-3">
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="steparrow-gen-info-location-input">LinkedIn</label>
+                                                        <label class="form-label" for="steparrow-gen-info-location-input">LinkedIn: <span style="color: red">*</span> </label>
                                                         <input type="text" class="form-control @error('linkedin') is-invalid @enderror" name="linkedin" value="{{ old('linkedin') }}" id="steparrow-gen-info-linkedin-input" placeholder="Enter LinkedIn" required >
                                                         @if($errors->has('linkedin'))
                                                             <span class="text-danger">{{ $errors->first('linkedin') }}</span>

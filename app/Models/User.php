@@ -149,7 +149,11 @@ class User extends Authenticatable
     {
 
         try {
-            $photo = self::uploadPhoto($request->file('profile_photo'));
+            $photo = null;
+            if(!empty($request->file)){
+                $photo = self::uploadPhoto($request->file('profile_photo'));
+            }
+
 
             $user = User::create([
                 'first_name' => $request->first_name,
