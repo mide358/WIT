@@ -25,7 +25,7 @@ class LearnerAdminSeeder extends Seeder
                 'email' => fake()->randomElement($array = array('ife@gmail.com', 'learner@gmail.com', 'admin@gmail.com', 'moshood@gmail.com', 'ladi@gmail.com', 'shara@gmail.com', 'ope@gmail.com')),
                 'password' =>  Hash::make('Password1$'),
                 'phone_number' => fake()->phoneNumber(),
-                'status' =>fake()->randomElement($array = array('ENABLED')),
+                'status' => fake()->randomElement($array = array('ENABLED')),
                 'role' => fake()->randomElement($array = array('LEARNER', 'ADMIN')),
                 'profile_photo' => fake()->imageUrl($width = 640, $height = 480),
                 'slug' => fake()->slug(),

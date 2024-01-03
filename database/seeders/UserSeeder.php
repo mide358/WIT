@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $users = User::factory(100)->create();
+        $users = User::factory(10)->create();
         $countries = Country::pluck('id')->toArray();
 
         $users->each(function ($user) use($countries) {
