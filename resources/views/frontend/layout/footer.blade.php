@@ -5,7 +5,7 @@
             <div class="col-sm-6">
                 <div>
                     <p class="copy-rights mb-0">
-                        <script> document.write(new Date().getFullYear()) </script> © Social Learn
+                        <script> document.write(new Date().getFullYear()) </script> © Social Learn a dissertation project by Iyimide Adegunloye
                     </p>
                 </div>
             </div>
