@@ -17,7 +17,7 @@ class InterestFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => 'PYTHON',
+            'name' => fake()->unique()->currencyCode(),
             'slug' => fake()->slug(),
             'status' => fake()->randomElement($array = array('ENABLED', 'DISABLED'))
         ];
