@@ -14,7 +14,8 @@ class ChatController extends Controller
         $getUsers = $this->getUsers();
         $getChats = $this->getChats($slug);
         $receiver = User::whereSlug($slug)->first();
-        return view('frontend.pages.chat', ['users' => $getUsers, 'chats' => $getChats, 'receiver' => $receiver]);
+        $route = 'frontend.pages.' .strtolower(auth()->user()->role).'.dashboard.sidebar';
+        return view('frontend.pages.chat', ['users' => $getUsers, 'chats' => $getChats, 'route' => $route, 'receiver' => ($receiver) ?? null]);
     }
 
     private function getUsers()

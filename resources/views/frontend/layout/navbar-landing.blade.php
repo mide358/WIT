@@ -20,13 +20,10 @@
                     <a class="nav-link" href="{{ route('frontend.mentors.index') }}">Browse all Mentors</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">FAQs</a>
+                    <a class="nav-link" href="{{ route('frontend.faqs') }}">FAQs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="{{ route('frontend.contact') }}">Contact Us</a>
                 </li>
             </ul>
             @guest

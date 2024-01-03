@@ -69,8 +69,10 @@
                                                             {{ $forum->created_at->diffForHumans() }}
                                                         </small></h5>
                                                     <p class="text-muted">{{ $forum->description }}.</p>
+                                                    @auth
                                                     <button type="button" class="btn btn-sm text-muted bg-light" data-bs-toggle="modal" data-bs-target="#myModal" onclick="replyComment({{$forum->id}})"><i
                                                             class="mdi mdi-reply"></i> Reply</button>
+                                                    @endauth
                                                     @foreach($forum->children as $child)
                                                         <div class="d-flex mt-4">
                                                             <div class="flex-shrink-0">
