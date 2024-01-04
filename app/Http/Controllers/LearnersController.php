@@ -26,9 +26,9 @@ class LearnersController extends Controller
 
     public function suggestions()
     {
-        $user = User::find(23)->first();
-        $interests = User::find(23)->with('interests')->first();
-        //$user = auth()->user();
+        //$user = User::find(auth()->user)->first();
+        //$interests = User::find(23)->with('interests')->first();
+        $user = auth()->user();
         $recommendMentors = User::recommendMentors($user->id);
         return view('frontend.pages.learners.suggestions', ['mentors' => $recommendMentors->random(8), 'count' => $recommendMentors->count(), 'user_interests' => $interests]);
     }
