@@ -27,10 +27,11 @@ class LearnersController extends Controller
     public function suggestions()
     {
         //$user = User::find(auth()->user)->first();
-        //$interests = User::find(23)->with('interests')->first();
+
         $user = auth()->user();
+        $interests = User::find(auth()->user()->id)->with('interests')->first();
         $recommendMentors = User::recommendMentors($user->id);
-        return view('frontend.pages.learners.suggestions', ['mentors' => $recommendMentors->paginate(8), 'count' => $recommendMentors->count(), 'user_interests' => $interests]);
+        return view('frontend.pages.learners.suggestions', ['mentors' => $recommendMentors->all(), 'count' => $recommendMentors->count(), 'user_interests' => $interests]);
     }
 
     public function connections()
