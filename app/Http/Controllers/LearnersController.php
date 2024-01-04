@@ -30,7 +30,7 @@ class LearnersController extends Controller
         //$interests = User::find(23)->with('interests')->first();
         $user = auth()->user();
         $recommendMentors = User::recommendMentors($user->id);
-        return view('frontend.pages.learners.suggestions', ['mentors' => $recommendMentors->random(8), 'count' => $recommendMentors->count(), 'user_interests' => $interests]);
+        return view('frontend.pages.learners.suggestions', ['mentors' => $recommendMentors->paginate(8), 'count' => $recommendMentors->count(), 'user_interests' => $interests]);
     }
 
     public function connections()
