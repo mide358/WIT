@@ -34,6 +34,7 @@
             @endguest
             @auth
                 <div class="">
+                    <span class="btn btn-default"><i class=" ri-user-line align-bottom me-1"></i> Hello! {{ auth()->user()->full_name }}</span>
                     <a href="{{ route('dashboard') }}" class="btn btn-default"><i class=" ri-dashboard-line align-bottom me-1"></i> Dashboard</a>
                     <a href="{{ route('logout') }}" class="btn btn-primary"><i class="ri-logout-box-line align-bottom me-1"></i> Logout</a>
                 </div>
