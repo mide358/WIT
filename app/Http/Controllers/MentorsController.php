@@ -37,10 +37,13 @@ class MentorsController extends Controller
     public function find($slug)
     {
         $find = User::whereSlug($slug)->first();
-        $suggestions = User::recommendMentors($find->id)->random(4);
+        $suggestions = User::recommendMentors($find->id)->random()->take(4)->get();
 
         $mentor = User::whereSlug($slug)->with('profile', 'interests', 'posts')->first();
-        $following = Follow::where(['learner_id' => auth()->user()->id, 'mentor_id' => $find->id])->first();
+        $following = null;
+        if(auth()->check()) {
+            $following = Follow::where(['learner_id' => auth()->user()->id, 'mentor_id' => $find->id])->first();
+        }
         return view('frontend.pages.mentors.find', ['mentor' => $mentor, 'suggestions' => $suggestions, 'following' => $following]);
     }
 
