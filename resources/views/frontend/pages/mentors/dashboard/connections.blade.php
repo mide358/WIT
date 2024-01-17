@@ -53,7 +53,7 @@
                                     <div class="card-footer border-top border-top-dashed">
                                         <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i>
                                         <span style="color:blue">{{ $connection->profile ? $connection->profile->job_title : ' '}}</span><span class="text-muted"> at </span>
-                                        {{ $connection->profile->company }}
+                                        {{ $connection->profile ? $connection->profile->company : ' ' }}
                                     </div>
                                     <div class="card-footer border-top border-top-dashed">
                                         <form action="{{ route('frontend.accept.connect') }}" method="POST">
