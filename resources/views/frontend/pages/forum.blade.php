@@ -81,7 +81,7 @@
                                                             </div>
                                                             <div class="flex-grow-1 ms-3">
                                                                 <h5 class="fs-13">{{ $child->user->full_name }} <small class="text-muted ms-2">
-                                                                        {{ $forum->created_at->diffForHumans() }}
+                                                                        {{ $child->created_at->diffForHumans() }}
                                                                     </small></h5>
                                                                 <p class="text-muted">{{ $child->description }}</p>
                                                             </div>

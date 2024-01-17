@@ -46,13 +46,13 @@
                                                     class="ri-auction-fill align-bottom me-1"></i> View Profile</a></div>
                                     </div>
 
-                                    <div class="card-body"><p class="fw-medium mb-0 float-end">{{ $connection->profile->location}} </p>                    <h5
+                                    <div class="card-body"><p class="fw-medium mb-0 float-end">{{ $connection->profile ? $connection->profile->location : ' '}} </p>                    <h5
                                             class="mb-1"><a href="{{ route('frontend.course.find', ['slug' => $connection->slug]) }}">{{ $connection->name }}</a></h5>
                                         <p class="text-muted mb-0">{{ Str::limit($connection->full_name) }}</p>
                                     </div>
                                     <div class="card-footer border-top border-top-dashed">
                                         <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i>
-                                        <span style="color:blue">{{ $connection->profile->job_title}}</span><span class="text-muted"> at </span>
+                                        <span style="color:blue">{{ $connection->profile ? $connection->profile->job_title : ' '}}</span><span class="text-muted"> at </span>
                                         {{ $connection->profile->company }}
                                     </div>
                                     <div class="card-footer border-top border-top-dashed">

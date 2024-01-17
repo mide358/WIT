@@ -61,7 +61,7 @@
                     <div class="card">
                         <div class="text-center mt-2">
                             <h5 class="text-primary">Welcome Back !</h5>
-                            <p class="text-muted">Sign Up to be a Learner.</p>
+                            <p class="text-muted">Sign Up to be a Mentor.</p>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('register.post') }}" method="POST" enctype="multipart/form-data">
@@ -155,9 +155,10 @@
                                                     <span class="text-danger">{{ $errors->first('password') }}</span>
                                                 @endif
                                             </div>
-                                            <div class="mb-3">
+                                            <div class="mb-3 mt-3">
                                                 <label class="form-label" for="steparrow-gen-info-location-input">Secret Question: <span style="color: red">*</span> </label>
                                                 <select name="secret_question" id="secret_question" class="form-control" required>
+                                                    <option>Select a secret question</option>
                                                     @foreach(\App\Http\Enums\SecretQuestionEnums::cases() as $q)
                                                         <option value="{{ $q->name }}">{{ $q->value }}</option>
                                                     @endforeach
